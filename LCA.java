@@ -1,49 +1,36 @@
-import java.util.ArrayList;
-import java.util.List;
+//Main class
+public class LCA<Key extends Comparable<Key>>{
 
-class Node { 
-    int data; 
-    Node left, right; 
-  
-    Node(int value) { 
-        data = value; 
-        left = right = null; 
-    } 
-} 
+	public class Node{
+		Node left, right;
+		Key key;		
 
-public class LowestCommonAncestor<Key extends Comparable<Key>>
-{
-	class Node {
-		private Node left;             
-		private Node right;
-		private Key data;
-		private int N;             // number of nodes in subtree
-
-		public Node(Key value, int N) {
-			this.data = value;         // associated data
-			left = right = null;	  // left and right subtrees
-			this.N = N;
+		public Node(Key key)
+		{
+			this.key = key;
 		}
 	}
-	private Node root;
-	/**
-	 *  Insert node into BST.
-	 *  If key already exists, update with new value.
-	 *
-	 *  @param key the key to insert
-	 *  @param val the value associated with key
-	 */
-	public void put(Key key) {
-		if (key == null) {  return; }
+
+	public Node root;
+
+
+	public void put(Key key)
+	{
 		root = put(root, key);
 	}
 
-	private Node put(Node x, Key key) {
-		if (x == null) return new Node(key, 1);
-		int cmp = key.compareTo(x.data);
-		if      (cmp < 0) x.left  = put(x.left,  key);
-		else if (cmp > 0) x.right = put(x.right, key);
-		else              x.data   = key;
-		x.N = 1 + size(x.left) + size(x.right);
+	private Node put(Node x, Key key)
+	{
+		if(x==null){
+			return new Node(key);
+		}
+		int cmp = key.compareTo(x.key);
+		if(cmp<0){
+			x.left = put(x.left, key);
+		}else if(cmp>0){
+			x.right = put(x.right, key);
+		}
 		return x;
 	}
+
+	
