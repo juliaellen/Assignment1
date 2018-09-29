@@ -33,4 +33,18 @@ public class LCA<Key extends Comparable<Key>>{
 		return x;
 	}
 
-	
+	public Node get(Key key)
+	{
+		return get(root, key);
+		}
+
+	private Node get(Node x, Key key) {
+		if (x == null) return null;
+		int cmp = key.compareTo(x.key);
+		if      (cmp < 0) return get(x.left, key);
+		else if (cmp > 0) return get(x.right, key);
+		else              return x;
+	}
+
+
+}
