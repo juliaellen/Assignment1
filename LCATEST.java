@@ -12,4 +12,12 @@ public class LCATEST {
 		assertNull( testBST.search(testBST.root, 7, 1));
 	}
 
+	@Test // test with only one node in
+	public void testSingle()
+	{
+		LCA<Integer> testBST = new LCA<Integer>();
+		testBST.put(7);
+		assertNull(testBST.search(testBST.root,1,3));
+		
+	}
 	
