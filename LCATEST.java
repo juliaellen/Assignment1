@@ -21,3 +21,23 @@ public class LCATEST {
 		
 	}
 	
+	@Test // test with multiple nodes
+	public void testPopulated()
+	{
+		LCA<Integer> test = new LCA<Integer>();
+		test.put(9);
+		test.put(1);
+		test.put(4);
+		test.put(19);
+		test.put(9);
+		test.put(13);
+		test.put(3);
+		test.put(2);
+		test.put(15);
+		test.put(14);
+		test.put(16);
+		
+		assertSame(test.search(test.root,19,1).key,9);
+		assertSame(test.search(test.root,19,9).key,9);
+		assertSame(test.search(test.root,14,16).key,15);
+	}
