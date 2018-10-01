@@ -1,74 +1,32 @@
-import static org.junit.Assert.*;
-
 import org.junit.Test;
-
-//Using JUNIT FrameWork
+ //Using JUNIT FrameWork
 public class LCATEST {
-	
+ 	
 	@Test // test with no nodes
 	public void testEmpty() {
-		LCA<Integer> testBST = new LCA<Integer>();
+		BST<Integer> testBST = new BST<Integer>();
 		
-		assertNull( testBST.search(testBST.root, 7, 1));
+		assertNull( LCA(testBST.root, 7, 1));
 	}
-
-	@Test // test with only one node in
+ 	@Test // test with only one node in
 	public void testSingle()
 	{
-		LCA<Integer> testBST = new LCA<Integer>();
+		BST<Integer> testBST = new BST<Integer>();
 		testBST.put(7);
-		assertNull(testBST.search(testBST.root,1,3));
+		assertNull(LCA(testBST.root,1,3));
 		
 	}
 	
 	@Test // test with multiple nodes
 	public void testPopulated()
 	{
-		LCA<Integer> test = new LCA<Integer>();
+		BST<Integer> test = new BST<Integer>();
 		test.put(9);
 		test.put(1);
 		test.put(4);
 		test.put(19);
 		test.put(9);
 		test.put(13);
-		test.put(3);
-		test.put(2);
-		test.put(15);
-		test.put(14);
-		test.put(16);
 		
-		assertSame(test.search(test.root,19,1).key,9);
-		assertSame(test.search(test.root,19,9).key,9);
-		assertSame(test.search(test.root,14,16).key,15);
 	}
 	@Test // test when left or right are not in the tree
-	public void testNotInTree()
-	{
-
-		LCA<Integer> test = new LCA<Integer>();
-		test.put(9);
-		test.put(1);
-		test.put(4);
-		test.put(19);
-		test.put(9);
-		test.put(13);
-		assertNull(test.search(test.root,19,3)); // returns Null so cannot compare key or triggers nullpointer
-		assertNull(test.search(test.root,1,20));
-		assertNull(test.search(test.root,5,3));
-		assertNull(test.search(test.root,5,5));
-		assertNull(test.search(test.root,20,1));
-	}
-	
-	@Test // test when v1 and v2 are the same value
-	public void testSameValue()
-	{
-		LCA<Integer> test = new LCA<Integer>();
-		test.put(9);
-		test.put(1);
-		test.put(4);
-		test.put(19);
-		test.put(9);
-		test.put(13);
-		assertSame(test.search(test.root,9,9).key,9);
-		assertSame(test.search(test.root,19,19).key,19);
-	}
