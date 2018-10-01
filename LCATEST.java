@@ -30,3 +30,18 @@ public class LCATEST {
 		
 	}
 	@Test // test when left or right are not in the tree
+	public void testNotInTree()
+	{
+		
+ 		BST<Integer> test = new BST<Integer>();
+		test.put(9);
+		test.put(1);
+		test.put(4);
+		test.put(19);
+		test.put(9);
+		test.put(13);
+		assertNull(LeastCommonAncestor(test.root,19,3));
+	}
+	@Test // test when v1 and v2 are the same value
+	public void testSameValue()
+
