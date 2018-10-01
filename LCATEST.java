@@ -58,3 +58,17 @@ public class LCATEST {
 		assertNull(test.search(test.root,5,5));
 		assertNull(test.search(test.root,20,1));
 	}
+	
+	@Test // test when v1 and v2 are the same value
+	public void testSameValue()
+	{
+		LCA<Integer> test = new LCA<Integer>();
+		test.put(9);
+		test.put(1);
+		test.put(4);
+		test.put(19);
+		test.put(9);
+		test.put(13);
+		assertSame(test.search(test.root,9,9).key,9);
+		assertSame(test.search(test.root,19,19).key,19);
+	}
