@@ -1,23 +1,27 @@
+
+
 //Main class
-//public class LCA{
 public class LCA<Key extends Comparable<Key>>{
- 	public class Node{
+
+	public class Node{
 		Node left, right;
 		Key key;		
-		
+
 		public Node(Key key)
 		{
 			this.key = key;
 		}
 	}
- 	public Node root;
-	
-	
+
+	public Node root;
+
+
 	public void put(Key key)
 	{
 		root = put(root, key);
 	}
- 	private Node put(Node x, Key key)
+
+	private Node put(Node x, Key key)
 	{
 		if(x==null){
 			return new Node(key);
@@ -30,15 +34,17 @@ public class LCA<Key extends Comparable<Key>>{
 		}
 		return x;
 	}
-	
- 	public Node search(Node root, int v1, int v2)
-	
-	
-	
-	public Node search(Node root, Key v1, Key v2)
+
+	public Node get(Key key)
 	{
-	 if(root.val == v1 || root.val == v2)
-	 if(root.key.compareTo(v1) == 0 || root.key.compareTo(v2) == 0)
-	 {
-		 return root;
-	 }
+		return get(root, key);
+		}
+
+	private Node get(Node x, Key key) {
+		if (x == null) return null;
+		int cmp = key.compareTo(x.key);
+		if      (cmp < 0) return get(x.left, key);
+		else if (cmp > 0) return get(x.right, key);
+		else              return x;
+	}
+}
