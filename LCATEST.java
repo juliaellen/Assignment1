@@ -1,6 +1,8 @@
 import static org.junit.Assert.*;
  import org.junit.Test;
  public class LCATEST {
+	 
+	 
  	@Test // test with no nodes
 	public void testEmpty() {
 		
@@ -9,6 +11,24 @@ import static org.junit.Assert.*;
 	public void testSingle()
 	{
 		
+	}
+ 	
+ 	public void testGet()
+	{
+		LCA<Integer> bst = new LCA<Integer>(); 	
+		assertSame("test get empty tree", null, bst.get(7));
+		assertNull("test get empty tree", bst.get(7));
+		bst.put(1);
+		assertSame("test single tree", 1, bst.get(1));
+		assertSame("test single tree", 1, bst.get(1).key);
+		bst.put(2);
+		bst.put(4);
+		bst.put(5);
+		assertSame("test value larger than root",4, bst.get(4));
+		assertSame("test value smaller than root", 2, bst.get(2));
+		assertSame("test value larger than root",4, bst.get(4).key);
+		assertSame("test value smaller than root", 2, bst.get(2).key);
+		assertSame("test value larger but not in tree", null, bst.get(11));
 	}
 	
 	@Test // test with multiple nodes
