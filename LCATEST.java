@@ -60,4 +60,20 @@ import static org.junit.Assert.*;
 		assertSame(test.search(test.root,9,9).key,9);
 		assertSame(test.search(test.root,19,19).key,19);
 	}
+ @Test 
+	public void testIsAcyclic()
+	{
+		LCA test = new LCA();
+		Node b = new Node(1,"B");
+		test.put(b);
+		assertTrue(test.isAcyclic());// test single node
+		Node a = new Node(1,"A");
+		test.put(a);
+		b.addEdgeTo(a);
+		assertTrue(test.isAcyclic); // test two nodes acyclic
+		a.addEdgeTo(b);
+		assertFalse(test.isAcyclic); // test two nodes cyclic
+		
+		
+	}
 }
