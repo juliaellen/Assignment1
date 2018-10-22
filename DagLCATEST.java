@@ -27,5 +27,9 @@ public class DagLCATEST
 		test1.addEdge(2, 3);
 		test1.addEdge(3, 4);
 		assertTrue(test1.acyclic())
+		assertTrue(test1.acyclic());
+		test1.addEdge(4,1);
+		assertFalse(test1.acyclic());
+		
 	}
 }
