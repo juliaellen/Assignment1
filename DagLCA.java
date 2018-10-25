@@ -162,6 +162,30 @@ public class DagLCA {
 			}
 		}
 	}
+	private void validateVertex(int v) 
+	{
+		if (v < 0 || v >= V)
+			throw new IllegalArgumentException("vertex " + v + " is not between 0 and " + (V-1));
+
+	}
+
+
+	public int LCA(int v, int w)
+	{
+		isAcyclic();
+		if(!isDAG){
+			return -1;
+		}
+		validateVertex(v);//exception thrown ifinvalid
+		validateVertex(w);
+
+
+
+		if(E==0)// no edges
+		{
+			return -1;
+		}
+	}
 }
 
 
