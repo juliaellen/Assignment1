@@ -186,6 +186,18 @@ public class DagLCA {
 			return -1;
 		}
 	}
+	public DagLCA reverse() {
+        DagLCA childToParent = new DagLCA(V);
+        for (int v = 0; v < V; v++) 
+        {
+            
+        	for (int w : adj(v)) 
+        	{
+            	childToParent.addEdge(w, v);
+            }
+        }
+        return childToParent;
+    }
 }
 
 
